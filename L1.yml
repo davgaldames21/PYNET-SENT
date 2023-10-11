@@ -1,0 +1,87 @@
+---
+- name: PLAYBOOK 1 CAPA DE ACCESO
+  hosts: R5
+  gather_facts: false
+  connection: local
+
+  tasks:
+#--------------------------------------------------------------#
+    - name: PRUEBA DE CONEXION SIMPLE (PING)
+      ios_command:
+        commands:
+          - ping 1.1.1.1
+      register: print_output
+
+    - name: PRUEBA DE CONEXION SIMPLE (PING)
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: RASTREO DE RUTA (TRACEROUTE)
+      ios_command:
+        commands:
+          - traceroute 2.2.2.2
+      register: print_output
+
+    - name: RASTREO DE RUTA (TRACEROUTE)
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: ESTADO DE LA INTERFAZ Y SU DIRECCIONAMIENTO
+      ios_command:
+        commands:
+          - show ip interface brief
+      register: print_output
+
+    - name: ESTADO DE LA INTERFAZ Y SU DIRECCIONAMIENTO
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: CONFIGURACION GENERAL DE LAS INTERFACES (IP)
+      ios_command:
+        commands:
+          - show ip interface
+      register: print_output
+
+    - name: CONFIGURACION GENERAL DE LAS INTERFACES (IP)
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: CONFIGURACION GENERAL DE LAS INTERFACES (SIN IP)
+      ios_command:
+        commands:
+          - show interface
+      register: print_output
+
+    - name: CONFIGURACION GENERAL DE LAS INTERFACES (SIN IP)
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: TABLA DE DIRECCIONES MAC
+      ios_command:
+        commands:
+          - show ip arp
+      register: print_output
+
+    - name: TABLA DE DIRECCIONES MAC
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: VLAN
+      ios_command:
+        commands:
+          - show vlan-switch
+      register: print_output
+
+    - name: VLAN
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: VECINOS CONECTADOS
+      ios_command:
+        commands:
+          - show cdp neighbors
+      register: print_output
+
+    - name: VECINOS CONECTADOS
+      debug:
+        var: print_output.stdout_lines     

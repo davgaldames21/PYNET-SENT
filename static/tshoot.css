@@ -1,0 +1,227 @@
+/* Estilos generales (iguales a los anteriores) */
+html, body {
+    font-family: Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+
+main {
+    display: flex; /* Hace que los elementos hijos se coloquen en línea */
+    width: 100%;
+    height: 100%;
+}
+#MAIN-1 {
+    width: 100%;
+    height: 97%;
+}
+
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: column; /* Cambio a orientación vertical */
+    list-style: none;
+    margin: 0; /* Ajusta el margen vertical entre elementos */
+    padding: 0 40px; /* Ajusta el espaciado horizontal (ancho) aquí */
+    background-color: #b20238;
+    border-radius: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 99.3%;
+}
+
+.menu ul li {
+    margin: 10px 0; /* Ajusta el margen vertical entre elementos */
+}
+
+.menu ul li a {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-family: poppins;
+    text-decoration: none;
+    height: 70px; /* Ajusta la altura de cada elemento según sea necesario */
+    position: relative;
+}
+
+.menu ul li a .title {
+    position: absolute;
+    font-size: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: .5s;
+}
+
+.menu ul li a .imgNAV {
+    margin-top: 5px;
+    position: absolute;
+    font-size: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .5s;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu ul li a:hover .title {
+    transform: translate(-50%, calc(-50% + 10px));
+    opacity: 1;
+}
+
+.menu ul li a:hover .imgNAV {
+    top: 0;
+    background-color: #55eb5d;
+    color: #fff;
+    outline: 4px #fff solid;
+}
+
+
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+    align-items: center; /* Centra horizontalmente los elementos */
+}
+
+.menu-container a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column; /* Coloca el texto debajo de la imagen */
+    align-items: center; /* Centra horizontalmente el texto */
+    margin: 10px 0; /* Espacio entre elementos */
+}
+
+#logo {
+    margin-top: 30px;
+    height: 80px;
+    width: 80px;
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos para la sección de ajustes */
+form {
+    background-color: #e8d21d;;
+    border: 1px solid #e8d21d;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón de guardar ajustes */
+input[type="submit"] {
+    background-color: #b20238;
+    color: white;
+    margin-top: 100px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+#H1 {
+    height: 100%;
+    display: flex;
+}
+
+
+#B1 {
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    background-color: #e8d21d;
+    border-radius: 20px;
+    margin: 1%
+
+
+}
+#B2 {
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    background-color: #e8d21d;
+    border-radius: 20px;
+    margin: 1%;
+}
+
+#B2-2 {
+    width: 98%;
+    height: 80%;
+    text-align: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+    margin: 1%;
+
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 400px; /* Altura máxima de la ventana de salida */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+
+
+}
+
+
+/* Estilos para el texto de salida */
+#codigo-output {
+    white-space: pre-wrap; /* Mantiene el formato de los saltos de línea */
+    font-family: monospace; /* Usa una fuente monoespaciada para mantener el formato */
+    color: black;
+    justify-content: left;
+}

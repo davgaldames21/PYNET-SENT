@@ -1,0 +1,27 @@
+---
+- name: PLAYBOOK OSPF
+  hosts: R6
+  gather_facts: false
+  connection: local
+
+  tasks:
+#--------------------------------------------------------------#
+    - name: PRUEBA DE CONEXION SIMPLE (PING)
+      ios_command:
+        commands:
+          - show ip protocols
+      register: print_output
+
+    - name: PRUEBA DE CONEXION SIMPLE (PING)
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: PRUEBA DE CONEXION SIMPLE (PING)
+      ios_command:
+        commands:
+          - show ip ospf neighbor
+      register: print_output
+
+    - name: PRUEBA DE CONEXION SIMPLE (PING)
+      debug:
+        var: print_output.stdout_lines

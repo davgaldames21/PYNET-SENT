@@ -1,0 +1,99 @@
+---
+- name: PLAYBOOK 2 CAPA DE DISTRIBUCIÓN
+  hosts: SW_L3_A
+  gather_facts: false
+  connection: local
+
+  tasks:
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN DE VECINOS
+      ios_command:
+        commands:
+          - Show cdp neighbors
+      register: print_output
+
+    - name: COMPROBACIÓN DE VECINOS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN VLAN
+      ios_command:
+        commands:
+          - Show vlan-switch
+      register: print_output
+
+    - name: COMPROBACIÓN VLAN
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN ACL
+      ios_command:
+        commands:
+          - Show access-list
+      register: print_output
+
+    - name: COMPROBACIÓN ACL
+      debug:
+        var: print_output.stdout_lines 
+#--------------------------------------------------------------#
+    - name: COMPROBACION DE ENLACES REDUNDANTES
+      ios_command:
+        commands:
+          - show etherchannel summary 
+      register: print_output
+
+    - name: COMPROBACION DE ENLACES REDUNDANTES
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACION STP
+      ios_command:
+        commands:
+          - show spanning-tree root
+      register: print_output
+
+    - name: COMPROBACION STP
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN RUTAS
+      ios_command:
+        commands:
+          - Show ip route
+      register: print_output
+
+    - name: COMPROBACIÓN RUTAS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN INTERFACES TRUNK
+      ios_command:
+        commands:
+          - Show interfaces trunk
+      register: print_output
+
+    - name: COMPROBACIÓN INTERFACES TRUNK
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN PROTOCOLOS
+      ios_command:
+        commands:
+          - Show ip protocols
+      register: print_output
+
+    - name: COMPROBACIÓN PROTOCOLOS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN ERRORES EN INTERFACES
+      ios_command:
+        commands:
+          - Show interfaces counters errors
+      register: print_output
+
+    - name: COMPROBACIÓN ERRORES EN INTERFACES
+      debug:
+        var: print_output.stdout_lines
+
+

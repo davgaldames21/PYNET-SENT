@@ -1,0 +1,149 @@
+/* Estilos generales */
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+html, body {
+    font-family: Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+    align-items: center; /* Centra horizontalmente los elementos */
+}
+
+.menu-container a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column; /* Coloca el texto debajo de la imagen */
+    align-items: center; /* Centra horizontalmente el texto */
+    margin: 10px 0; /* Espacio entre elementos */
+}
+
+#imgNAV {
+    height: 80%;
+    width: 80px;
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+}
+
+/* Resto de tus estilos aquí */
+table {
+    width: 50%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #2A56F5;
+    color: #fff;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #d9edf7;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#H1 {
+    height: 50%;
+    display: flex;
+}
+
+#B1 {
+    height: 425px;
+    width: 33.3%;
+    text-align: center;
+    justify-content: center;
+    background-color: bisque;
+
+}
+
+#B2 {
+    height: 425px;
+    width: 33.3%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: chocolate;
+}
+
+
+#B3 {
+    height: 425px;
+    width: 33.3%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: bisque;
+}
+
+
+#H2 {
+    height: 50%;
+    display: flex;
+}
+
+#B4 {
+    height: 425px;
+    width: 33.3%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: chocolate;
+}
+
+#B5 {
+    height: 425px;
+    width: 33.3%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: bisque;
+}
+
+#B6 {
+    height: 425px;
+    width: 33.3%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: chocolate;
+}

@@ -1,0 +1,117 @@
+---
+- name: PLAYBOOK 3 CAPA DE NUCLEO
+  hosts: R5
+  gather_facts: false
+  connection: local
+
+  tasks:
+#--------------------------------------------------------------#
+    - name: PRUEBA DE CONEXION SIMPLE (PING)
+      ios_command:
+        commands:
+          - Ping 192.168.100.1
+      register: print_output
+
+    - name: PRUEBA DE CONEXION SIMPLE (PING)
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: VECINOS CONECTADOS
+      ios_command:
+        commands:
+          - show cdp neighbors
+      register: print_output
+
+    - name: VECINOS CONECTADOS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN RUTAS
+      ios_command:
+        commands:
+          - Show ip route
+      register: print_output
+
+    - name: COMPROBACIÓN RUTAS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN DE PROTOCOLOS
+      ios_command:
+        commands:
+          - Show ip protocols
+      register: print_output
+
+    - name: COMPROBACIÓN DE PROTOCOLOS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN VECINOS OSPF
+      ios_command:
+        commands:
+          - Show ip ospf neighbor
+      register: print_output
+
+    - name: COMPROBACIÓN VECINOS OSPF
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN INTERFACES OSPF
+      ios_command:
+        commands:
+          - Show ip ospf interface brief
+      register: print_output
+
+    - name: COMPROBACIÓN INTERFACES OSPF
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN VECINOS EIGRP
+      ios_command:
+        commands:
+          - Show ip eigrp neighbor
+      register: print_output
+
+    - name: COMPROBACIÓN VECINOS EIGRP
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN INTERFACES EIGRP
+      ios_command:
+        commands:
+          - Show ip eigrp interfaces
+      register: print_output
+
+    - name: COMPROBACIÓN INTERFACES EIGRP
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN VECINOS BGP
+      ios_command:
+        commands:
+          - Show ip bgp summary
+      register: print_output
+
+    - name: COMPROBACIÓN VECINOS BGP
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN TABLA BGP
+      ios_command:
+        commands:
+          - Show ip bgp
+      register: print_output
+
+    - name: COMPROBACIÓN TABLA BGP
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: COMPROBACIÓN HSRP
+      ios_command:
+        commands:
+          - Show standby brief
+      register: print_output
+
+    - name: COMPROBACIÓN HSRP
+      debug:
+        var: print_output.stdout_lines

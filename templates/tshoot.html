@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Troubleshoot</title>
+    <link rel="stylesheet" href="/static/tshoot.css">
+</head>
+<body>
+    <main>
+        <div class="menu">
+            
+            <ul>
+                <img id="logo" src="/static/img/1.png" alt="Menú">
+                <li><a href="/INICIO"><span class="imgNAV"><img src="/static/img/3.png" alt="Tu Imagen"></span><span class="title">DASHBOARD</span></a></li>
+                <li><a href="/AJUSTES"><span class="imgNAV"><img src="/static/img/2.png" alt="Tu Imagen"></span><span class="title">AJUSTES</span></a></li>
+                <li><a href="/TROUBLESHOOT"><span class="imgNAV"><img src="/static/img/8.png" alt="Tu Imagen"></span><span class="title">TROUBLESHOOT</span></a></li>
+                <li><a href="/GESTION"><span class="imgNAV"><img src="/static/img/7.png" alt="Tu Imagen"></span><span class="title">GESTION</span></a></li>
+                <li><a href="/ALERTAS"><span class="imgNAV"><img src="/static/img/4.png" alt="Tu Imagen"></span><span class="title">ALERTAS</span></a></li>
+                <li><a href="/ESCANEO"><span class="imgNAV"><img src="/static/img/5.png" alt="Tu Imagen"></span><span class="title">ESCANEO</span></a></li>                
+                <li><a href="/SSH"><span class="imgNAV"><img src="/static/img/6.png" alt="Tu Imagen"></span><span class="title">SSH</span></a></li>
+            </ul>
+        </div>
+        <section id="MAIN-1">   
+            <section id="H1"> 
+                <section id="B1">
+                    <form method="POST">
+                        <label for="nombre_equipo">Nombre del Equipo a Analizar:</label>
+                        <input type="text" name="nombre_equipo" required><br>
+                
+                        <label for="capa">Seleccione la Capa:</label>
+                        <select name="capa" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select><br>
+                
+                        <input type="submit" value="Guardar Información">
+                    </form>
+                
+                    <form method="POST" action="/ejecutar_codigo">
+                        <input type="submit" value="Ejecutar Código">
+                    </form>
+                    
+                </section>
+
+                <section id="B2">
+                    <h1>SALIDA PLAYBOOK</h1>
+                    <section id="B2-2" >
+                        <div id="codigo-output">{{ salida }}</div>
+                    </section>
+                    
+                </section>
+            </section>
+
+
+
+
+    
+</body>
+</html>

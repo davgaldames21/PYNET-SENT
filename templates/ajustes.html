@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajustes de Tu Red</title>
+    <link rel="stylesheet" type="text/css" href="/static/ajustes.style.css">>
+</head>
+<body>
+    <main>
+        <div class="menu">
+            
+            <ul>
+                <img id="logo" src="/static/img/1.png" alt="Menú">
+                <li><a href="/INICIO"><span class="imgNAV"><img src="/static/img/3.png" alt="Tu Imagen"></span><span class="title">DASHBOARD</span></a></li>
+                <li><a href="/AJUSTES"><span class="imgNAV"><img src="/static/img/2.png" alt="Tu Imagen"></span><span class="title">AJUSTES</span></a></li>
+                <li><a href="/TROUBLESHOOT"><span class="imgNAV"><img src="/static/img/8.png" alt="Tu Imagen"></span><span class="title">TROUBLESHOOT</span></a></li>
+                <li><a href="/GESTION"><span class="imgNAV"><img src="/static/img/7.png" alt="Tu Imagen"></span><span class="title">GESTION</span></a></li>
+                <li><a href="/ALERTAS"><span class="imgNAV"><img src="/static/img/4.png" alt="Tu Imagen"></span><span class="title">ALERTAS</span></a></li>
+                <li><a href="/ESCANEO"><span class="imgNAV"><img src="/static/img/5.png" alt="Tu Imagen"></span><span class="title">ESCANEO</span></a></li>                
+                <li><a href="/SSH"><span class="imgNAV"><img src="/static/img/6.png" alt="Tu Imagen"></span><span class="title">SSH</span></a></li>
+            </ul>
+        </div>
+        <section id="MAIN-1">   
+            <section id="H1"> 
+                <section id="B1">
+                    <div class="container">
+                        <h1>AJUSTES DE TU RED</h1>
+                        <form method="POST">
+                            <h3>Para comenzar, necesitamos las credenciales de SSH de los equipos de tu red.</h3>
+                            <label for="gateway">Gateway:</label>
+                            <input type="text" name="gateway" required><br>
+                            
+                            <label for="username">Nombre de Usuario:</label>
+                            <input type="text" name="username" required><br>
+                
+                            <label for="password">Contraseña:</label>
+                            <input type="password" name="password" required><br>
+                
+                            <input type="submit" value="Guardar Información">
+                        </form>
+                    </div>
+                </section>   
+            </section>
+    
+</body>
+</html>

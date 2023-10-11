@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PYNET-SENTINEL</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.inicio2.css">
+    <style>
+        /* Estilos para el menú desplegable */
+        .menu-container {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Inicialmente oculto */
+            width: 250px;
+            height: 100%;
+            background-color: #2A56F5;
+            transition: left 0.3s ease-in-out;
+            overflow-y: auto;
+        }
+
+        .menu-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .menu-button img {
+            height: 50px;
+            width: 50px;
+        }
+
+        /* Estilos generales */
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: Arial, sans-serif;
+            background-color: #090820;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            height: 95%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Resto de tus estilos aquí */
+    </style>
+</head>
+<body>
+    <header>
+        
+
+        <!-- Botón para abrir/cerrar el menú -->
+        <div class="menu-button" onclick="toggleMenu()">
+            <img  id="imgNAV" src="/static/img/PYNET.png" alt="Menú">
+        </div>
+    </header>
+
+    <!-- Menú desplegable -->
+    <div class="menu-container" id="menu">
+        <nav>
+            <ul>
+                
+                <li><a href="/AJUSTES"><img id="imgNAV" src="/static/img/1-removebg-preview.png" alt="Descripción de la imagen"> Ajustes</a></li>
+                <li><a href="/TROUBLESHOOT"><img id="imgNAV" src="/static/img/2-removebg-preview.png" alt="Descripción de la imagen"> Troubleshoot</a></li>
+                <li><a href="/TROUBLESHOOT"><img id="imgNAV" src="/static/img/3-removebg-preview.png" alt="Descripción de la imagen"> Opción 3</a></li>
+                <li><a href="/ALERTAS"><img id="imgNAV" src="/static/img/4-removebg-preview.png" alt="Descripción de la imagen"> Alertas</a></li>
+                <li><a href="/ESCANEO"><img id="imgNAV" src="/static/img/5-removebg-preview.png" alt="Descripción de la imagen"> Escaneo</a></li>
+                <li><a href="/SSH"><img id="imgNAV" src="/static/img/5-removebg-preview.png" alt="SSH"> SSH</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section id="H1">        
+            <section id="B1">
+                <div class="table-wrapper">
+                    <h1>Equipos Registrados</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre del Equipo</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for host in hosts %}
+                            <tr>
+                                <td>{{ host }}</td>
+                                <td>Pendiente</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>    
+            </section>
+
+            <section id="B2">
+            </section>
+
+            <section id="B3">
+            </section>
+
+
+
+        </section>
+        
+        <section id="H2">
+            <section id="B4">
+            </section>
+
+            <section id="B5">
+            </section>
+
+            <section id="B6">
+            </section>
+        </section>
+
+
+
+
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            if (menu.style.left === '0px') {
+                menu.style.left = '-250px';
+            } else {
+                menu.style.left = '0px';
+            }
+        }
+    </script>
+</body>
+</html>

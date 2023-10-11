@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terminal Web</title>
+    <link rel="stylesheet" type="text/css" href="/static/terminal.css">
+</head>
+<body>
+    <h1>Terminal Web</h1>
+    
+    <form method="POST" action="/execute">
+        <label for="command">Escribe un comando SSH:</label>
+        <input type="text" name="command" id="command" required>
+        <input type="submit" value="Ejecutar">
+    </form>
+
+    <h2>Salida:</h2>
+    <pre>{{ output }}</pre>
+
+    <h2>Error:</h2>
+    <pre>{{ error }}</pre>
+</body>
+</html>
