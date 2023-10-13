@@ -3,7 +3,7 @@ import time
 import os
 import subprocess
 from flask import Flask, render_template
-
+from flask import jsonify
 from flask import Response
 
 app = Flask(__name__)
@@ -48,6 +48,16 @@ def cargar_hosts():
     return hosts
 
 #---------------------PAGINA DE INICIO-------------------------------------------#
+@app.route('/actualizar_tabla_ping', methods=['GET'])
+def actualizar_tabla_ping():
+    # Realiza las operaciones necesarias para obtener los datos actualizados
+    hosts = ping_hosts()  # Asegúrate de definir la función ping_hosts para obtener los datos
+
+    # Devuelve los datos actualizados como respuesta JSON
+    return jsonify(hosts=hosts)
+
+
+
 @app.route('/INICIO', methods=['GET', 'POST'])
 def INICIO():
     # Carga solo los nombres de host desde el archivo
@@ -92,7 +102,158 @@ def ALERTAS():
 #----------------------------------------------------------------#
 @app.route('/GESTION')
 def GESTION():
-    return render_template('gestion.html')
+    equipos_routers = []
+    equipos_switches = []
+    seccion_actual = None  # Para realizar un seguimiento de la sección actual
+
+    with open('myhosts', 'r') as archivo:
+        for linea in archivo:
+            linea = linea.strip()  # Elimina espacios en blanco al principio y al final
+
+            if linea.startswith('[') and linea.endswith(']'):
+                # Si es una línea de sección (por ejemplo, [routers] o [switches])
+                seccion_actual = linea
+            elif seccion_actual == '[routers]' and linea:
+                # Si estamos en la sección [routers] y la línea no está vacía
+                # Dividir la línea para obtener el nombre del equipo (R1, R2, etc.)
+                equipo = linea.split()[0]
+                equipos_routers.append(equipo)
+            elif seccion_actual == '[switches]' and linea:
+                # Si estamos en la sección [switches] y la línea no está vacía
+                # Dividir la línea para obtener el nombre del equipo (SW_L3_A, SW_L2_B, etc.)
+                equipo = linea.split()[0]
+                equipos_switches.append(equipo)
+
+    return render_template('gestion.html', nombres_routers=equipos_routers, nombres_switches=equipos_switches)
+
+
+
+@app.route('/cuestionario/<equipo_name>', methods=['GET', 'POST'])
+def cuestionario(equipo_name):
+    if request.method == 'POST':
+        
+        Nombre_dispositivo = request.form['Nombre_dispositivo']
+        Marca = request.form['Marca']
+        Modelo = request.form['Modelo']
+        Nserie = request.form['Nserie']
+        Año_compra = request.form['Año_compra']
+        Meses_compra = request.form['Meses_compra']
+        Dia_compra = request.form['Dia_compra']
+        garantia = request.form['garantia']
+        depreciacion = request.form['depreciacion']
+        Cproveedor = request.form['Cproveedor']
+        Precio_Or = request.form['Precio_Or']
+        Detalles = request.form['Detalles']
+        garantia_actual = str(int(garantia) - (int(time.strftime("%Y", time.gmtime())) - int(Año_compra)))
+        depreciacion_actual = str((int(Precio_Or) / int(depreciacion)))
+        
+        # Utiliza los datos de equipos_routers y equipos_switches
+        #equipos_routers, equipos_switches = GESTION()
+
+        # Verifica si el nombre del dispositivo ingresado se encuentra en la lista de equipos
+        datos = [Nombre_dispositivo, Marca, Modelo, Nserie, Año_compra,Meses_compra,Dia_compra, garantia, depreciacion, Cproveedor, Precio_Or, Detalles,garantia_actual,depreciacion_actual]
+        #if equipo_name in equipos_routers or equipo_name in equipos_switches:
+            # Si el dispositivo existe en la lista, guarda los datos en un archivo
+        archivo_datos = f"archivo_registro_{equipo_name}.txt"
+        super_contador = 0
+        with open(archivo_datos, "w") as columnas:
+            for dato in datos:
+                if super_contador == 0:
+                    columnas.write("Nombre del dispositivo: ")
+                    columnas.write(dato)
+                    columnas.write("\n")
+                if super_contador == 1:
+                    columnas.write("Marca del dispositivo: ")
+                    columnas.write(dato)
+                    columnas.write("\n")   
+                if super_contador == 2:    
+                    columnas.write("Modelo del dispositivo: ")
+                    columnas.write(dato)
+                    columnas.write("\n")            
+                if super_contador == 3:
+                    columnas.write("Numero de serie: ")
+                    columnas.write(dato)
+                    columnas.write("\n")
+                if super_contador == 4:
+                    columnas.write("Fecha de compra: ")
+                    columnas.write(dato)
+                if super_contador == 5:
+                    columnas.write("/")
+                    columnas.write(dato)
+                if super_contador == 6:
+                    columnas.write("/")
+                    columnas.write(dato)
+                    columnas.write("\n")
+                if super_contador == 7:
+                    columnas.write("Garantia original: ")
+                    columnas.write(dato)
+                    columnas.write("\n")
+                if super_contador == 8:
+                    columnas.write("Años de depresiacion:  ")
+                    columnas.write(dato)
+                    columnas.write("\n")
+                if super_contador == 9:
+                    columnas.write("Contacto de provedor: ")
+                    columnas.write(dato)
+                    columnas.write("\n")    
+                if super_contador == 10:
+                    columnas.write("Precio original: ")
+                    columnas.write(dato)
+                    columnas.write("\n")           
+                if super_contador == 11:
+                    columnas.write(dato)
+                    columnas.write("\n")
+                if super_contador == 12:
+                    columnas.write("Años de garantia Restantes: ")
+                    columnas.write(dato)
+                    columnas.write("\n")               
+                if super_contador == 13:
+                    columnas.write("Valor actual (Depreciado): ")
+                    columnas.write(dato)
+                    columnas.write("\n")                                                 
+
+
+                super_contador = super_contador  + 1
+
+
+        return redirect(url_for('GESTION'))
+    
+    # Si se está accediendo a la página de cuestionario (método GET), carga el formulario
+    return render_template('cuestionario.html', equipo_name=equipo_name)
+
+# Resto del código de Flask (incluyendo la función index y las rutas relacionadas)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Ruta para consultar los datos generados
+@app.route('/consultar/<equipo_name>')
+def consultar(equipo_name):
+    try:
+        print(equipo_name)
+        with open(f'archivo_registro_{equipo_name}.txt', 'r') as file:
+            data = file.read()
+    except FileNotFoundError:
+        data = 'No se encontraron datos para este dispositivo.'
+    return render_template('consultar.html', equipo_name=equipo_name, data=data)
+
+
+
+
+
+
 
 #----------------------------------------------------------------#
 from netmiko import ConnectHandler

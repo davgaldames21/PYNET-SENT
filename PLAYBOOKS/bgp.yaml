@@ -1,0 +1,77 @@
+---
+- name: PLAYBOOK BGP
+  hosts: R6
+  gather_facts: false
+  connection: local
+
+  tasks:
+#--------------------------------------------------------------#
+    - name: TABLA DE RUTAS
+      ios_command:
+        commands:
+          - show ip route
+      register: print_output
+
+    - name: TABLA DE RUTAS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: PROTOCOLOS ACTIVOS
+      ios_command:
+        commands:
+          - show ip protocols
+      register: print_output
+
+    - name: PROTOCOLOS ACTIVOS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: RUTAS BGP
+      ios_command:
+        commands:
+          - show bgp
+      register: print_output
+
+    - name: RUTAS BGP
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: VECINOS BGP
+      ios_command:
+        commands:
+          - show ip bgp
+      register: print_output
+
+    - name: VECINOS BGP
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: ACCESS-LIST
+      ios_command:
+        commands:
+          - show access-list
+      register: print_output
+
+    - name: ACCESS-LIST
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: ROUTE-MAP
+      ios_command:
+        commands:
+          - show run | sec route-map
+      register: print_output
+
+    - name: ROUTE-MAP
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: TABLA DE SIGUIENTE SALTO
+      ios_command:
+        commands:
+          - show ip bgp nexthops
+      register: print_output
+
+    - name: TABLA DE SIGUIENTE SALTO
+      debug:
+        var: print_output.stdout_lines

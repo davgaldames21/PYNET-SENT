@@ -1,0 +1,38 @@
+---
+- name: Verificar HSRP
+  hosts: R6
+  gather_facts: false
+  connection: local
+
+  tasks:
+#--------------------------------------------------------------#
+    - name: Verificar HSRP Status
+      ios_command:
+        commands:
+          - show standby brief
+      register: hsrp_output
+
+    - name: Mostrar HSRP Status
+      debug:
+        var: hsrp_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: Verificar HSRP Status
+      ios_command:
+        commands:
+          - show standby neighbors
+      register: hsrp_output
+
+    - name: Mostrar HSRP Status
+      debug:
+        var: hsrp_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: Verificar HSRP Status
+      ios_command:
+        commands:
+          - show run | include standby
+      register: hsrp_output
+
+    - name: Mostrar HSRP Status
+      debug:
+        var: hsrp_output.stdout_lines
+#--------------------------------------------------------------#

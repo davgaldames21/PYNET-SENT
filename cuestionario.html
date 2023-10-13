@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cuestionario</title>
+</head>
+<body>
+    <h1>Cuestionario</h1>
+    <form method="POST">
+        <label for="Nombre_dispositivo">Nombre Dispositivo:</label>
+        <input type="text" name="Nombre_dispositivo"><br>
+
+        <label for="Marca">Marca:</label>
+        <input type="text" name="Marca"><br>
+
+        <label for="Modelo">Modelo:</label>
+        <input type="text" name="Modelo"><br>
+
+        <label for="Nserie">Numero de Serie:</label>
+        <input type="text" name="Nserie"><br>
+
+        <label for="Año_compra">Año de la compra:</label>
+        <input type="text" name="Año_compra"><br>
+
+        <label for="Meses_compra">Mes de la compra:</label>
+        <input type="text" name="Meses_compra"><br>
+
+        <label for="Dia_compra">Dia de la compra:</label>
+        <input type="text" name="Dia_compra"><br>
+
+        <label for="garantia">Años garantia:</label>
+        <input type="text" name="garantia"><br>
+
+        <label for="depreciacion">Años de depreciacion:</label>
+        <input type="text" name="depreciacion"><br>
+
+        <label for="Cproveedor">Contacto proveedor:</label>
+        <input type="text" name="Cproveedor"><br>
+
+        <label for="Precio_Or">Valor original:</label>
+        <input type="text" name="Precio_Or"><br>
+
+        <label for="Detalles">Detalles:</label>
+        <input type="text" name="Detalles"><br>        
+
+        <input type="submit" value="Guardar">
+        <a href="{{ url_for('GESTION') }}">Volver a la lista</a>
+
+    </form>
+</body>
+</html>

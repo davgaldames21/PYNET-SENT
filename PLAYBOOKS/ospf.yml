@@ -1,0 +1,87 @@
+---
+- name: PLAYBOOK OSPF
+  hosts: R6
+  gather_facts: false
+  connection: local
+
+  tasks:
+#--------------------------------------------------------------#
+    - name: TABLA DE RUTAS
+      ios_command:
+        commands:
+          - show ip route
+      register: print_output
+
+    - name: TABLA DE RUTAS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: PROTOCOLOS ACTIVOS
+      ios_command:
+        commands:
+          - show ip protocols
+      register: print_output
+
+    - name: PROTOCOLOS ACTIVOS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: PRUEBA DE CONEXION SIMPLE (PING
+      ios_command:
+        commands:
+          - show ip ospf neighbors
+      register: print_output
+
+    - name: PRUEBA DE CONEXION SIMPLE (PING)
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: INTERFACES EN OSPF
+      ios_command:
+        commands:
+          - show ip ospf interface brief
+      register: print_output
+
+    - name: INTERFACES EN OSPF
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: INFORMACIÓN SOBRE LA TOPOLOGÍA
+      ios_command:
+        commands:
+          - show ip ospf topology-info
+      register: print_output
+
+    - name: INFORMACIÓN SOBRE LA TOPOLOGÍA
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: VIRTUAL LINKS
+      ios_command:
+        commands:
+          - show ip ospf virtual-links
+      register: print_output
+
+    - name: VIRTUAL LINKS
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: SUMARIZACIÓN
+      ios_command:
+        commands:
+          - show ip ospf summary-address
+      register: print_output
+
+    - name: SUMARIZACIÓN
+      debug:
+        var: print_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: BASE DE DATOS
+      ios_command:
+        commands:
+          - show ip ospf database
+      register: print_output
+
+    - name: BASE DE DATOS
+      debug:
+        var: print_output.stdout_lines

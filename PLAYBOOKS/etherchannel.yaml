@@ -1,0 +1,37 @@
+---
+- name: Verificar Etherchannel
+  hosts: R6
+  gather_facts: false
+  connection: local
+
+  tasks:
+#--------------------------------------------------------------#
+    - name: Verificar Etherchannel Status
+      ios_command:
+        commands:
+          - show etherchannel summary
+      register: etherchannel_output
+
+    - name: Verificar Etherchannel Status
+      debug:
+        var: etherchannel_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: Verificar Etherchannel Interfaces
+      ios_command:
+        commands:
+          - show interfaces port-channel
+      register: port_channel_output
+
+    - name: Verificar Etherchannel Interfaces
+      debug:
+        var: port_channel_output.stdout_lines
+#--------------------------------------------------------------#
+    - name: Verificar Etherchannel Configuration
+      ios_command:
+        commands:
+          - show run | include interface Port-Channel
+      register: port_channel_config
+
+    - name: Verificar Etherchannel Configuration
+      debug:
+        var: port_channel_config.stdout_lines
